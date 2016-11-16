@@ -6,17 +6,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="My Blog">
-    <title>My Blog</title>
+    <title>使用 PHP 建立 Line Bot - My Blog</title>
     <meta name="author" content="Yen Jung">
     
     
     
-    <meta property="og:type" content="blog">
-<meta property="og:title" content="My Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="一、開發平台：
+PHP 5.4以上
+Ubuntu 16.04
+Composer version 1.2.2
+
+
+二、Line Bot帳號設定1.首先，請先到 Line Business Center 註冊 BOT 帳號，並且啟用Messaging API服務。
+2.進到Line Manager 頁面中，選擇剛註冊的BOT帳號，至帳號設定-&amp;gt;Bot設定。
+3.確認身分是否為LINE Devel">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="使用 PHP 建立 Line Bot">
+<meta property="og:url" content="http://yoursite.com/uncategorized/Line-echobot-php/index.html">
 <meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="一、開發平台：
+PHP 5.4以上
+Ubuntu 16.04
+Composer version 1.2.2
+
+
+二、Line Bot帳號設定1.首先，請先到 Line Business Center 註冊 BOT 帳號，並且啟用Messaging API服務。
+2.進到Line Manager 頁面中，選擇剛註冊的BOT帳號，至帳號設定-&amp;gt;Bot設定。
+3.確認身分是否為LINE Devel">
+<meta property="og:updated_time" content="2016-11-15T16:35:40.205Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Blog">
+<meta name="twitter:title" content="使用 PHP 建立 Line Bot">
+<meta name="twitter:description" content="一、開發平台：
+PHP 5.4以上
+Ubuntu 16.04
+Composer version 1.2.2
+
+
+二、Line Bot帳號設定1.首先，請先到 Line Business Center 註冊 BOT 帳號，並且啟用Messaging API服務。
+2.進到Line Manager 頁面中，選擇剛註冊的BOT帳號，至帳號設定-&amp;gt;Bot設定。
+3.確認身分是否為LINE Devel">
     
     
         
@@ -45,7 +73,7 @@
         
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="3">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <h1 class="header-title">
         <a class="header-title-link" href="/ ">My Blog</a>
@@ -69,7 +97,7 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="3">
     
         <div class="sidebar-profile">
             <a href="/#about">
@@ -147,27 +175,21 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="3"
                  class="
                         hasCoverMetaIn
                         ">
                 
-
-<section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/uncategorized/Line-echobot-php/">
-                            使用 PHP 建立 Line Bot
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            使用 PHP 建立 Line Bot
+        </h1>
+    
+    <div class="post-meta">
     <time itemprop="datePublished" datetime="2016-11-15T09:54:35-05:00">
 	
 		    15 Nov 2016
@@ -176,10 +198,11 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <h2 id="一、開發平台："><a href="#一、開發平台：" class="headerlink" title="一、開發平台："></a>一、開發平台：</h2><ul>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h2 id="一、開發平台："><a href="#一、開發平台：" class="headerlink" title="一、開發平台："></a>一、開發平台：</h2><ul>
 <li>PHP 5.4以上</li>
 <li>Ubuntu 16.04</li>
 <li>Composer version 1.2.2</li>
@@ -213,72 +236,78 @@
 <p>此處要填上在LINE Developers中的Channel Secret。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$channelSecret = <span class="string">'&lt;your channel secret&gt;'</span>;</div></pre></td></tr></table></figure></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">require_once</span>(<span class="string">'./EchoBot.php'</span>);</div><div class="line"></div><div class="line">$channelAccessToken = <span class="string">'&lt;your channel access token&gt;'</span>;</div><div class="line">$channelSecret = <span class="string">'&lt;your channel secret&gt;'</span>;</div><div class="line"></div><div class="line">$client = <span class="keyword">new</span> EchoBot($channelAccessToken, $channelSecret);</div><div class="line"><span class="keyword">foreach</span> ($client-&gt;parseEvents() <span class="keyword">as</span> $event) &#123;</div><div class="line">    <span class="keyword">switch</span> ($event[<span class="string">'type'</span>]) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'message'</span>:</div><div class="line">            $message = $event[<span class="string">'message'</span>];</div><div class="line">            <span class="keyword">switch</span> ($message[<span class="string">'type'</span>]) &#123;</div><div class="line">                <span class="keyword">case</span> <span class="string">'text'</span>:</div><div class="line">                    $client-&gt;replyMessage(<span class="keyword">array</span>(</div><div class="line">                        <span class="string">'replyToken'</span> =&gt; $event[<span class="string">'replyToken'</span>],</div><div class="line">                        <span class="string">'messages'</span> =&gt; <span class="keyword">array</span>(</div><div class="line">                            <span class="keyword">array</span>(</div><div class="line">                                <span class="string">'type'</span> =&gt; <span class="string">'text'</span>,</div><div class="line">                                <span class="string">'text'</span> =&gt; $message[<span class="string">'text'</span>]</div><div class="line">                            )</div><div class="line">                        )</div><div class="line">                    ));</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">default</span>:</div><div class="line">                    error_log(<span class="string">"Unsupporeted message type: "</span> . $message[<span class="string">'type'</span>]);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            error_log(<span class="string">"Unsupporeted event type: "</span> . $event[<span class="string">'type'</span>]);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/uncategorized/Line-echobot-php/#post-footer" class="postShorten-excerpt_link link">
-                                Comentar y compartir
-                            </a>
-                        </p>
-                    
-                </div>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/uncategorized/Hexo-in-Github-IO/">
-                            使用Github和Hexo架Blog
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-11-14T10:17:59-05:00">
-	
-		    14 Nov 2016
-    	
-    </time>
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO EN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Line/">Line</a> <a class="tag tag--primary tag--small t-link" href="/tags/PHP/">PHP</a>
 
             </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/uncategorized/Hexo-in-Github-IO/" data-tooltip="使用Github和Hexo架Blog">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">SIGUIENTE</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
             
-                <div class="postShorten-content" itemprop="articleBody">
-                    
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/uncategorized/Hexo-in-Github-IO/#post-footer" class="postShorten-excerpt_link link">
-                                Comentar y compartir
-                            </a>
-                        </p>
-                    
-                </div>
+                <a class="post-action-btn btn btn--default" href="#">
             
-        </div>
-        
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
-        
-        
-        <li class="pagination-number">página 1 de 1</li>
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+            
+        
+    </div>
+</article>
+
 
 
                 <footer id="footer" class="main-content-wrap">
@@ -288,6 +317,83 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/uncategorized/Hexo-in-Github-IO/" data-tooltip="使用Github和Hexo架Blog">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">SIGUIENTE</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-google-plus"></i><span class="">Compartir en Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-facebook-official"></i><span>Compartir en Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/uncategorized/Line-echobot-php/">
+                <i class="fa fa-twitter"></i><span>Compartir en Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
             
         </div>
         
@@ -334,6 +440,8 @@
     <!--SCRIPTS-->
 <script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
 <!--SCRIPTS END-->
+
+    
 
 
 
