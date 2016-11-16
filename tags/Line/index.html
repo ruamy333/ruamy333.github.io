@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="My Blog">
-    <title>Etiqueta: Line - My Blog</title>
+    <title>Tag: Line - My Blog</title>
     <meta name="author" content="Yen Jung">
     
     
@@ -89,7 +89,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                    <span class="sidebar-button-desc">Inicio</span>
+                    <span class="sidebar-button-desc">Home</span>
                 </a>
         </li>
         
@@ -101,7 +101,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-                    <span class="sidebar-button-desc">Categorías</span>
+                    <span class="sidebar-button-desc">Categories</span>
                 </a>
         </li>
         
@@ -113,7 +113,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-                    <span class="sidebar-button-desc">Etiquetas</span>
+                    <span class="sidebar-button-desc">Tags</span>
                 </a>
         </li>
         
@@ -125,7 +125,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-                    <span class="sidebar-button-desc">Archivos</span>
+                    <span class="sidebar-button-desc">Archives</span>
                 </a>
         </li>
         
@@ -171,7 +171,7 @@
                 <div class="postShorten-meta">
     <time itemprop="datePublished" datetime="2016-11-15T09:54:35-05:00">
 	
-		    15 Nov 2016
+		    Nov 15, 2016
     	
     </time>
     
@@ -192,12 +192,12 @@
 <p>4.至LINE developers 中，加入Web Server IP。</p>
 <p>5.以下是傳訊時會需要的資料，Channel Secret要點SHOW才會出現。</p>
 <p>6.Webhook URL則要改成Line bot回應的程式檔案，因為Line 要求一定要SSL憑證，因此此處的網址需要用https，且一定要使用Domain<br>Channel Access Token是傳訊時會需要的資料。</p>
-<p> </p>
-<h2 id="三、Web-Server設定"><a href="#三、Web-Server設定" class="headerlink" title="三、Web Server設定"></a>三、Web Server設定</h2><p>1.因為Line 要求一定要SSL憑證，因此要在Server上安裝SSL憑證，在此處我們用Let’s Encrypt這家免費SSL商。</p>
-<p>2.下載官方自動安裝憑證程式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo git <span class="built_in">clone</span> https://github.com/letsencrypt/letsencrypt /opt/letsencrypt</div></pre></td></tr></table></figure></p>
+<hr>
+<!--   --> <br>## 三、Web Server設定<br>1.因為Line 要求一定要SSL憑證，因此要在Server上安裝SSL憑證，在此處我們用Let’s Encrypt這家免費SSL商。<br><br>2.下載官方自動安裝憑證程式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo git <span class="built_in">clone</span> https://github.com/letsencrypt/letsencrypt /opt/letsencrypt</div></pre></td></tr></table></figure>
 <p>3.進入剛剛下載的資料夾。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /opt/letsencrypt</div></pre></td></tr></table></figure></p>
 <p>4.將網域輸入。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./letsencrypt-auto --apac	he <span class="_">-d</span> your_domain.com</div></pre></td></tr></table></figure></p>
 <p>5.設定過程中會需要輸入信箱，結束後程式會幫你自動加載SSL資料進conf，所以無需做任何設定。</p>
+<hr>
 <p> </p>
 <h2 id="四、Line-SDK-Install"><a href="#四、Line-SDK-Install" class="headerlink" title="四、Line SDK Install"></a>四、Line SDK Install</h2><p>1.使用Line bot API需要先下載line-bot-sdk，而line-bot-sdk需要使用Composer來安裝，因此要先安裝Composer。</p>
 <p>2.下載並安裝Composer。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ php -r <span class="string">"copy('https://getcomposer.org/installer', 'composer-setup.php');"</span></div><div class="line"></div><div class="line">$ php -r <span class="string">"if (hash_file('SHA384', 'composer-setup.php') === 'aa96f26c2b67226a324c27919f1eb05f21c248b987e6195cad9690d5c1ff713d53020a02ac8c217dbf90a7eacc9d141d') &#123; echo 'Installer verified'; &#125; else &#123; echo 'Installer corrupt'; unlink('composer-setup.php'); &#125; echo PHP_EOL;"</span></div><div class="line"></div><div class="line">$ php composer-setup.php</div><div class="line"></div><div class="line">$ php -r <span class="string">"unlink('composer-setup.php');"</span></div></pre></td></tr></table></figure></p>
@@ -205,6 +205,7 @@
 <p>若出現以下畫面則安裝    成功。</p>
 <p>4.可以在任何地方放置 Composer PHAR，在此處我們將Composer設為可以全域存取，不直接使用 php 執行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mv composer.phar /usr/<span class="built_in">local</span>/bin/composer</div></pre></td></tr></table></figure></p>
 <p>5.接著用Composer 安裝line-bot-sd    k。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ composer require linecorp/line-bot-sdk</div></pre></td></tr></table></figure></p>
+<hr>
 <h2 id="五、建立LINE-Bot"><a href="#五、建立LINE-Bot" class="headerlink" title="五、建立LINE Bot"></a>五、建立LINE Bot</h2><ol>
 <li>建立Echo Bot的Class，命名為EchoBot.php，實作5個方法。<br>1)hash_equals($knownString, $userString)<br>2)__construct($channelAccessToken,         $channelSecret)<br>3)parseEvents()<br>4)replyMessage($message)<br>5)sign($bo            dy)<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">if</span> (!function_exists(<span class="string">'hash_equals'</span>)) &#123;</div><div class="line">    defined(<span class="string">'USE_MB_STRING'</span>) <span class="keyword">or</span> define(<span class="string">'USE_MB_STRING'</span>, function_exists(<span class="string">'mb_strlen'</span>));</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">hash_equals</span><span class="params">($knownString, $userString)</span></span></div><div class="line">    &#123;</div><div class="line">        $strlen = <span class="function"><span class="keyword">function</span> <span class="params">($string)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span> (USE_MB_STRING) &#123;</div><div class="line">                <span class="keyword">return</span> mb_strlen($string, <span class="string">'8bit'</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">return</span> strlen($string);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="comment">// Compare string lengths</span></div><div class="line">        <span class="keyword">if</span> (($length = $strlen($knownString)) !== $strlen($userString)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $diff = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="comment">// Calculate differences</span></div><div class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $length; $i++) &#123;</div><div class="line">            $diff |= ord($knownString[$i]) ^ ord($userString[$i]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $diff === <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EchoBot</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($channelAccessToken, $channelSecret)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;channelAccessToken = $channelAccessToken;</div><div class="line">        <span class="keyword">$this</span>-&gt;channelSecret = $channelSecret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">parseEvents</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> ($_SERVER[<span class="string">'REQUEST_METHOD'</span>] !== <span class="string">'POST'</span>) &#123;</div><div class="line">            http_response_code(<span class="number">405</span>);</div><div class="line">            error_log(<span class="string">"Method not allowed"</span>);</div><div class="line">            <span class="keyword">exit</span>();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $entityBody = file_get_contents(<span class="string">'php://input'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (strlen($entityBody) === <span class="number">0</span>) &#123;</div><div class="line">            http_response_code(<span class="number">400</span>);</div><div class="line">            error_log(<span class="string">"Missing request body"</span>);</div><div class="line">            <span class="keyword">exit</span>();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!hash_equals(<span class="keyword">$this</span>-&gt;sign($entityBody), $_SERVER[<span class="string">'HTTP_X_LINE_SIGNATURE'</span>])) &#123;</div><div class="line">            http_response_code(<span class="number">400</span>);</div><div class="line">            error_log(<span class="string">"Invalid signature value"</span>);</div><div class="line">            <span class="keyword">exit</span>();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $data = json_decode($entityBody, <span class="keyword">true</span>);</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>($data[<span class="string">'events'</span>])) &#123;</div><div class="line">            http_response_code(<span class="number">400</span>);</div><div class="line">            error_log(<span class="string">"Invalid request body: missing events property"</span>);</div><div class="line">            <span class="keyword">exit</span>();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $data[<span class="string">'events'</span>];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">replyMessage</span><span class="params">($message)</span></span></div><div class="line">    &#123;</div><div class="line">        $header = <span class="keyword">array</span>(</div><div class="line">            <span class="string">"Content-Type: application/json"</span>,</div><div class="line">            <span class="string">'Authorization: Bearer '</span> . <span class="keyword">$this</span>-&gt;channelAccessToken,</div><div class="line">        );</div><div class="line"></div><div class="line">        $context = stream_context_create(<span class="keyword">array</span>(</div><div class="line">            <span class="string">"http"</span> =&gt; <span class="keyword">array</span>(</div><div class="line">                <span class="string">"method"</span> =&gt; <span class="string">"POST"</span>,</div><div class="line">                <span class="string">"header"</span> =&gt; implode(<span class="string">"\r\n"</span>, $header),</div><div class="line">                <span class="string">"content"</span> =&gt; json_encode($message),</div><div class="line">            ),</div><div class="line">        ));</div><div class="line"></div><div class="line">        $response = file_get_contents(<span class="string">'https://api.line.me/v2/bot/message/reply'</span>, <span class="keyword">false</span>, $context);</div><div class="line">        <span class="keyword">if</span> (strpos($http_response_header[<span class="number">0</span>], <span class="string">'200'</span>) === <span class="keyword">false</span>) &#123;</div><div class="line">            http_response_code(<span class="number">500</span>);</div><div class="line">            error_log(<span class="string">"Request failed: "</span> . $response);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">sign</span><span class="params">($body)</span></span></div><div class="line">    &#123;</div><div class="line">        $hash = hash_hmac(<span class="string">'sha256'</span>, $body, <span class="keyword">$this</span>-&gt;channelSecret, <span class="keyword">true</span>);</div><div class="line">        $signature = base64_encode($hash);</div><div class="line">        <span class="keyword">return</span> $signature;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
@@ -220,7 +221,7 @@
                     
                         <p>
                             <a href="/uncategorized/Line-echobot-php/#post-footer" class="postShorten-excerpt_link link">
-                                Comentar y compartir
+                                Comment and share
                             </a>
                         </p>
                     
@@ -234,7 +235,7 @@
     <ul class="pagination">
         
         
-        <li class="pagination-number">página 1 de 1</li>
+        <li class="pagination-number">page 1 of 1</li>
     </ul>
 </div>
 
@@ -267,14 +268,14 @@
         
             <h4 id="about-card-name">Yen Jung</h4>
         
-            <h5 id="about-card-bio"><p>author.bio</p>
+            <h5 id="about-card-bio"><p>Coding Life</p>
 </h5>
         
         
             <h5 id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>author.job</p>
+                <p>NCU Master Student</p>
 
             </h5>
         
