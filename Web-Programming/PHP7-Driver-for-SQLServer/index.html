@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="null">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="My Blog">
+    <title>PHP7連接Microsoft SQL Server - My Blog</title>
+    <meta name="author" content="Yen Jung">
+    
+    
+    
+    <meta name="description" content="開發平台
+windows 10
+xampp 7.0.15 portable版
+PHP 7.0.15
+MS SQL Server 2012">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="PHP7連接Microsoft SQL Server">
+<meta property="og:url" content="http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="開發平台
+windows 10
+xampp 7.0.15 portable版
+PHP 7.0.15
+MS SQL Server 2012">
+<meta property="og:image" content="http://yoursite.com/image/1.png">
+<meta property="og:image" content="http://yoursite.com/image/2.png">
+<meta property="og:image" content="http://yoursite.com/image/3.png">
+<meta property="og:image" content="http://yoursite.com/image/4.png">
+<meta property="og:image" content="http://yoursite.com/image/5.png">
+<meta property="og:image" content="http://yoursite.com/image/6.png">
+<meta property="og:image" content="http://yoursite.com/image/7.png">
+<meta property="og:updated_time" content="2017-03-25T15:24:42.727Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP7連接Microsoft SQL Server">
+<meta name="twitter:description" content="開發平台
+windows 10
+xampp 7.0.15 portable版
+PHP 7.0.15
+MS SQL Server 2012">
+<meta name="twitter:image" content="http://yoursite.com/image/1.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://yoursite.com/assets/images/myimage.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-nuvue6sithwirecbhvw3dkaobiojqvtadsnhguwi7k04xklybw5djl1smadp.min.css">
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">My Blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/myimage.jpg"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/myimage.jpg"/>
+            </a>
+            <span class="sidebar-profile-name">Yen Jung</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Inicio</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorías</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Etiquetas</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Archivos</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/ruamy333" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            PHP7連接Microsoft SQL Server
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-03-25T10:17:43-04:00">
+	
+		    25 Mar 2017
+    	
+    </time>
+    
+        <span>en </span>
+        
+    <a class="category-link" href="/categories/Web-Programming/">Web Programming</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h1 id="table-of-contents">Tabla de contenido</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#開發平台"><span class="toc-text">開發平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XAMPP安裝"><span class="toc-text">XAMPP安裝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#設定-PHP-開發的開發環境"><span class="toc-text">設定 PHP 開發的開發環境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下載並安裝SQL-Server-ODBC-Driver"><span class="toc-text">下載並安裝SQL Server ODBC Driver</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安裝PHP-Driver"><span class="toc-text">安裝PHP Driver</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#載入PHP-SQL-Driver"><span class="toc-text">載入PHP SQL Driver</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用PHP連線到SQL-Server"><span class="toc-text">使用PHP連線到SQL Server</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#資料庫連線（Connect）"><span class="toc-text">資料庫連線（Connect）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查詢"><span class="toc-text">查詢</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#新增"><span class="toc-text">新增</span></a></li></ol></li></ol></li></ol>
+<h3 id="開發平台"><a href="#開發平台" class="headerlink" title="開發平台"></a>開發平台</h3><ul>
+<li>windows 10</li>
+<li>xampp 7.0.15 portable版</li>
+<li>PHP 7.0.15</li>
+<li>MS SQL Server 2012</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h3 id="XAMPP安裝"><a href="#XAMPP安裝" class="headerlink" title="XAMPP安裝"></a>XAMPP安裝</h3><p>XAMPP比較特別的是提供三種版本</p>
+<ul>
+<li>安裝版本（installer.exe）。</li>
+<li>免安裝（xampp-win32-x.x.xx-x-VCxx.zip）版本。</li>
+<li>portable版：portable版移除FileZilla FTP伺服器與Mercury郵件伺服器等等的工具，所以XAMPP檔案體積也比較小。</li>
+</ul>
+<p>此處我們使用portable版本，只需要執行XAMPP的『setup_xampp』批次檔來更新環境中的路徑，不需要自己手動設定。<br><a href="https://www.apachefriends.org/zh_tw/download.html" target="_blank" rel="external">XAMPP官網下載</a></p>
+<p>選擇「更多下載」<br><div class="figure center" style="width:600px;"><img class="fig-img" src="image/1.png" style="width:600px;" alt=""></div></p>
+<p>選擇作業系統與PHP版本後，選擇要下載的版本，此處下載portable版。<br><div class="figure center" style="width:600px;"><img class="fig-img" src="image/2.png" style="width:600px;" alt=""></div></p>
+<p>解壓縮後執行setup_xampp.bat即可以開始使用xampp。<br><div class="figure center" style="width:600px;"><img class="fig-img" src="image/3.png" style="width:600px;" alt=""></div></p>
+<hr>
+<h3 id="設定-PHP-開發的開發環境"><a href="#設定-PHP-開發的開發環境" class="headerlink" title="設定 PHP 開發的開發環境"></a>設定 PHP 開發的開發環境</h3><p>PHP的 php_mssql.dll是用來與SQL Server 2000連線，因此若是使用SQL Server 2005以上版本，就要用到微軟為PHP提供的擴充功能（SQL Server Driver for PHP）。<br><a href="https://docs.microsoft.com/en-us/sql/connect/php/microsoft-php-driver-for-sql-server" target="_blank" rel="external">Microsoft PHP Driver for SQL Server</a></p>
+<p>PHP環境設定步驟<br><a href="https://docs.microsoft.com/en-us/sql/connect/php/step-1-configure-development-environment-for-php-development" target="_blank" rel="external">Configure development environment for PHP development</a></p>
+<h4 id="下載並安裝SQL-Server-ODBC-Driver"><a href="#下載並安裝SQL-Server-ODBC-Driver" class="headerlink" title="下載並安裝SQL Server ODBC Driver"></a>下載並安裝SQL Server ODBC Driver</h4><p>下載並安裝適用的SQL Server ODBC Driver。此處下載Microsoft ODBC Driver 13.1 for SQL Server並安裝。<br><a href="https://www.microsoft.com/en-us/download/details.aspx?id=53339" target="_blank" rel="external">Microsoft® ODBC Driver 13.1 for SQL Server® - Windows + Linux</a><br><div class="figure center" style="width:600px;"><img class="fig-img" src="image/4.png" style="width:600px;" alt=""></div></p>
+<h4 id="安裝PHP-Driver"><a href="#安裝PHP-Driver" class="headerlink" title="安裝PHP Driver"></a>安裝PHP Driver</h4><p>要使用Microsoft 的SQL Server Driver訪問SQL Server或Azure SQL資料庫，必須安裝PHP SQL Driver。<br><a href="https://docs.microsoft.com/en-us/sql/connect/php/system-requirements-for-the-php-sql-driver" target="_blank" rel="external">System Requirements for the PHP SQL Driver</a><br><div class="figure center" style="width:600px;"><img class="fig-img" src="image/5.png" style="width:600px;" alt=""></div></p>
+<p>因為我們使用的PHP版本是7.0.15，因此我們要下載<a href="https://www.microsoft.com/en-us/download/details.aspx?id=20098" target="_blank" rel="external">Microsoft Drivers for PHP for SQL Server Version 4.0（SQLSRV40.exe）</a><br>SQL Server的Microsoft Drivers 4.0 for PHP包含以下。<br><div class="figure center" style="width:600px;"><img class="fig-img" src="image/6.png" style="width:600px;" alt=""></div></p>
+<h4 id="載入PHP-SQL-Driver"><a href="#載入PHP-SQL-Driver" class="headerlink" title="載入PHP SQL Driver"></a>載入PHP SQL Driver</h4><p>將php_sqlsrv_7_ts_x86.dll 與 php_pdo_sqlsrv_7_ts_x86.dll複製到xampp資料夾中的php\ext\裡面。<br><a href="https://docs.microsoft.com/en-us/sql/connect/php/loading-the-php-sql-driver" target="_blank" rel="external">Loading the PHP SQL Driver</a></p>
+<p>修改php.ini文件中來啟用extension，手動加上以下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">extension=php_sqlsrv_7_ts_x86.dll</div><div class="line">extension=php_pdo_sqlsrv_7_ts_x86.dll</div><div class="line">extension=php_pdo.dll</div><div class="line">extension=php_odbc.dll</div></pre></td></tr></table></figure></p>
+<p>新增完成，重啟Apache後，看phpinfo()，找sqlsrv就會看到類似以下畫面<br><div class="figure center" style="width:600px;"><img class="fig-img" src="image/7.png" style="width:600px;" alt=""></div></p>
+<hr>
+<h3 id="使用PHP連線到SQL-Server"><a href="#使用PHP連線到SQL-Server" class="headerlink" title="使用PHP連線到SQL Server"></a>使用PHP連線到SQL Server</h3><h5 id="資料庫連線（Connect）"><a href="#資料庫連線（Connect）" class="headerlink" title="資料庫連線（Connect）"></a>資料庫連線（Connect）</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">OpenConnection</span><span class="params">()</span></span></div><div class="line">   &#123;</div><div class="line">       <span class="keyword">try</span></div><div class="line">       &#123;</div><div class="line">           $serverName = <span class="string">"tcp:myserver.database.windows.net,1433"</span>;</div><div class="line">           $connectionOptions = <span class="keyword">array</span>(<span class="string">"Database"</span>=&gt;<span class="string">"AdventureWorks"</span>,</div><div class="line">               <span class="string">"Uid"</span>=&gt;<span class="string">"MyUser"</span>, <span class="string">"PWD"</span>=&gt;<span class="string">"MyPassword"</span>);</div><div class="line">           $conn = sqlsrv_connect($serverName, $connectionOptions);</div><div class="line">           <span class="keyword">if</span>($conn == <span class="keyword">false</span>)</div><div class="line">               <span class="keyword">die</span>(FormatErrors(sqlsrv_errors()));</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)</div><div class="line">       &#123;</div><div class="line">           <span class="keyword">echo</span>(<span class="string">"Error!"</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h5 id="查詢"><a href="#查詢" class="headerlink" title="查詢"></a>查詢</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ReadData</span><span class="params">()</span></span></div><div class="line">   &#123;</div><div class="line">       <span class="keyword">try</span></div><div class="line">       &#123;</div><div class="line">           $conn = OpenConnection();</div><div class="line">           $tsql = <span class="string">"SELECT [CompanyName] FROM SalesLT.Customer"</span>;</div><div class="line">           $getProducts = sqlsrv_query($conn, $tsql);</div><div class="line">           <span class="keyword">if</span> ($getProducts == <span class="keyword">FALSE</span>)</div><div class="line">               <span class="keyword">die</span>(FormatErrors(sqlsrv_errors()));</div><div class="line">           $productCount = <span class="number">0</span>;</div><div class="line">           <span class="keyword">while</span>($row = sqlsrv_fetch_array($getProducts, SQLSRV_FETCH_ASSOC))</div><div class="line">           &#123;</div><div class="line">               <span class="keyword">echo</span>($row[<span class="string">'CompanyName'</span>]);</div><div class="line">               <span class="keyword">echo</span>(<span class="string">"&lt;br/&gt;"</span>);</div><div class="line">               $productCount++;</div><div class="line">           &#125;</div><div class="line">           sqlsrv_free_stmt($getProducts);</div><div class="line">           sqlsrv_close($conn);</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)</div><div class="line">       &#123;</div><div class="line">           <span class="keyword">echo</span>(<span class="string">"Error!"</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h5 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">InsertData</span><span class="params">()</span></span></div><div class="line">   &#123;</div><div class="line">       <span class="keyword">try</span></div><div class="line">       &#123;</div><div class="line">           $conn = OpenConnection();</div><div class="line"></div><div class="line">           $tsql = <span class="string">"INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT            INSERTED.ProductID VALUES ('SQL Server 1', 'SQL Server 2', 0, 0, getdate())"</span>;</div><div class="line">           <span class="comment">//Insert query</span></div><div class="line">           $insertReview = sqlsrv_query($conn, $tsql);</div><div class="line">           <span class="keyword">if</span>($insertReview == <span class="keyword">FALSE</span>)</div><div class="line">               <span class="keyword">die</span>(FormatErrors( sqlsrv_errors()));</div><div class="line">           <span class="keyword">echo</span> <span class="string">"Product Key inserted is :"</span>;</div><div class="line">           <span class="keyword">while</span>($row = sqlsrv_fetch_array($insertReview, SQLSRV_FETCH_ASSOC))</div><div class="line">           &#123;</div><div class="line">               <span class="keyword">echo</span>($row[<span class="string">'ProductID'</span>]);</div><div class="line">           &#125;</div><div class="line">           sqlsrv_free_stmt($insertReview);</div><div class="line">           sqlsrv_close($conn);</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)</div><div class="line">       &#123;</div><div class="line">           <span class="keyword">echo</span>(<span class="string">"Error!"</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO EN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/PHP/">PHP</a> <a class="tag tag--primary tag--small t-link" href="/tags/SQL-Server/">SQL Server</a> <a class="tag tag--primary tag--small t-link" href="/tags/XAMPP/">XAMPP</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Web-Programming/Line-echobot-php/" data-tooltip="使用 PHP 建立 Line Bot">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">SIGUIENTE</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Yen Jung. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Web-Programming/Line-echobot-php/" data-tooltip="使用 PHP 建立 Line Bot">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">SIGUIENTE</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-google-plus"></i><span class="">Compartir en Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-facebook-official"></i><span>Compartir en Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Web-Programming/PHP7-Driver-for-SQLServer/">
+                <i class="fa fa-twitter"></i><span>Compartir en Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/myimage.jpg"/>
+        
+            <h4 id="about-card-name">Yen Jung</h4>
+        
+            <h5 id="about-card-bio"><p>author.bio</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Taiwan
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/background.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+</html>

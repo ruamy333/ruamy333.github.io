@@ -17,26 +17,26 @@ Ubuntu 16.04
 Composer 1.2.2">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="使用 PHP 建立 Line Bot">
-<meta property="og:url" content="http://yoursite.com/uncategorized/Line-echobot-php/index.html">
+<meta property="og:url" content="http://yoursite.com/Web-Programming/Line-echobot-php/index.html">
 <meta property="og:site_name" content="My Blog">
 <meta property="og:description" content="開發平台
 PHP 5.4以上
 Ubuntu 16.04
 Composer 1.2.2">
-<meta property="og:image" content="http://yoursite.com/a.jpg">
+<meta property="og:image" content="http://yoursite.com/image/a.jpg">
 <meta property="og:image" content="http://yoursite.com/image/b.jpg">
 <meta property="og:image" content="http://yoursite.com/image/c.jpg">
 <meta property="og:image" content="http://yoursite.com/image/d.jpg">
 <meta property="og:image" content="http://yoursite.com/image/e.jpg">
 <meta property="og:image" content="http://yoursite.com/image/f.jpg">
-<meta property="og:updated_time" content="2016-11-16T13:07:12.809Z">
+<meta property="og:updated_time" content="2017-03-25T14:14:14.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 PHP 建立 Line Bot">
 <meta name="twitter:description" content="開發平台
 PHP 5.4以上
 Ubuntu 16.04
 Composer 1.2.2">
-<meta name="twitter:image" content="http://yoursite.com/a.jpg">
+<meta name="twitter:image" content="http://yoursite.com/image/a.jpg">
     
     
         
@@ -109,7 +109,7 @@ Composer 1.2.2">
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                    <span class="sidebar-button-desc">Home</span>
+                    <span class="sidebar-button-desc">Inicio</span>
                 </a>
         </li>
         
@@ -121,7 +121,7 @@ Composer 1.2.2">
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-                    <span class="sidebar-button-desc">Categories</span>
+                    <span class="sidebar-button-desc">Categorías</span>
                 </a>
         </li>
         
@@ -133,7 +133,7 @@ Composer 1.2.2">
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-                    <span class="sidebar-button-desc">Tags</span>
+                    <span class="sidebar-button-desc">Etiquetas</span>
                 </a>
         </li>
         
@@ -145,7 +145,7 @@ Composer 1.2.2">
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-                    <span class="sidebar-button-desc">Archives</span>
+                    <span class="sidebar-button-desc">Archivos</span>
                 </a>
         </li>
         
@@ -184,9 +184,15 @@ Composer 1.2.2">
     <div class="post-meta">
     <time itemprop="datePublished" datetime="2016-11-15T09:54:35-05:00">
 	
-		    Nov 15, 2016
+		    15 Nov 2016
     	
     </time>
+    
+        <span>en </span>
+        
+    <a class="category-link" href="/categories/Web-Programming/">Web Programming</a>
+
+
     
 </div>
 
@@ -194,7 +200,7 @@ Composer 1.2.2">
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#開發平台"><span class="toc-text">開發平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Line-Bot帳號設定"><span class="toc-text">Line Bot帳號設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Server設定"><span class="toc-text">Web Server設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Line-SDK-Install"><span class="toc-text">Line SDK Install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立LINE-Bot"><span class="toc-text">建立LINE Bot</span></a></li></ol>
+            <h1 id="table-of-contents">Tabla de contenido</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#開發平台"><span class="toc-text">開發平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Line-Bot帳號設定"><span class="toc-text">Line Bot帳號設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Server設定"><span class="toc-text">Web Server設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Line-SDK-Install"><span class="toc-text">Line SDK Install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立LINE-Bot"><span class="toc-text">建立LINE Bot</span></a></li></ol>
 <h3 id="開發平台"><a href="#開發平台" class="headerlink" title="開發平台"></a>開發平台</h3><ul>
 <li>PHP 5.4以上</li>
 <li>Ubuntu 16.04</li>
@@ -203,7 +209,7 @@ Composer 1.2.2">
 <a id="more"></a>
 <hr>
 <h3 id="Line-Bot帳號設定"><a href="#Line-Bot帳號設定" class="headerlink" title="Line Bot帳號設定"></a>Line Bot帳號設定</h3><p>首先，請先到 <a href="https://business.line.me/zh-hant/services/bot" target="_blank" rel="external">Line Business Center</a> 註冊 BOT 帳號，並且啟用Messaging API服務。</p>
-<p>進到 <a href="https://admin-official.line.me/" target="_blank" rel="external">Line Manager</a> 頁面中，選擇剛註冊的BOT帳號，至帳號設定-&gt;Bot設定。<br><div class="figure center" style="width:250px;"><img class="fig-img" src="a.jpg" style="width:250px;" alt=""></div></p>
+<p>進到 <a href="https://admin-official.line.me/" target="_blank" rel="external">Line Manager</a> 頁面中，選擇剛註冊的BOT帳號，至帳號設定-&gt;Bot設定。<br><div class="figure center" style="width:250px;"><img class="fig-img" src="image/a.jpg" style="width:250px;" alt=""></div></p>
 <p>確認身分是否為LINE Developers，Reply message APIæ¯否可用，並將webhook傳訊功能開啟。<br><div class="figure left" style="width:;"><img class="fig-img" src="image/b.jpg" alt=""></div></p>
 <p>至LINE developers 中，加入Web Server IP。<br><div class="figure center" style="width:;"><img class="fig-img" src="image/c.jpg" alt=""></div></p>
 <p>以下是傳訊時會需要的資料，Channel Secret要點SHOW才會出現。<br><div class="figure center" style="width:;"><img class="fig-img" src="image/d.jpg" alt=""></div></p>
@@ -237,7 +243,7 @@ Composer 1.2.2">
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                <span class="text-color-light text-small">ETIQUETADO EN</span><br/>
                 
     <a class="tag tag--primary tag--small t-link" href="/tags/Bot/">Bot</a> <a class="tag tag--primary tag--small t-link" href="/tags/Line/">Line</a> <a class="tag tag--primary tag--small t-link" href="/tags/PHP/">PHP</a>
 
@@ -248,17 +254,17 @@ Composer 1.2.2">
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Web-Programming/PHP7-Driver-for-SQLServer/"  data-tooltip="PHP7連接Microsoft SQL Server">
                 
                     <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
                 </a>
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/uncategorized/Hexo-in-Github-IO/" data-tooltip="使用Github和Hexo架Blog">
+                    <a class="post-action-btn btn btn--disabled">
                 
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <span class="hide-xs hide-sm text-small icon-mr">SIGUIENTE</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
@@ -271,17 +277,17 @@ Composer 1.2.2">
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/uncategorized/Line-echobot-php/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Web-Programming/Line-echobot-php/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/uncategorized/Line-echobot-php/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Web-Programming/Line-echobot-php/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/uncategorized/Line-echobot-php/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Web-Programming/Line-echobot-php/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -307,7 +313,7 @@ Composer 1.2.2">
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2016 Yen Jung. All Rights Reserved.
+        Copyrights &copy; 2017 Yen Jung. All Rights Reserved.
     </span>
 </footer>
 
@@ -319,17 +325,17 @@ Composer 1.2.2">
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Web-Programming/PHP7-Driver-for-SQLServer/"  data-tooltip="PHP7連接Microsoft SQL Server">
                 
                     <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
                 </a>
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/uncategorized/Hexo-in-Github-IO/" data-tooltip="使用Github和Hexo架Blog">
+                    <a class="post-action-btn btn btn--disabled">
                 
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <span class="hide-xs hide-sm text-small icon-mr">SIGUIENTE</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
@@ -342,17 +348,17 @@ Composer 1.2.2">
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/uncategorized/Line-echobot-php/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Web-Programming/Line-echobot-php/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/uncategorized/Line-echobot-php/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Web-Programming/Line-echobot-php/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/uncategorized/Line-echobot-php/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Web-Programming/Line-echobot-php/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -372,18 +378,18 @@ Composer 1.2.2">
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/uncategorized/Line-echobot-php/">
-                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Web-Programming/Line-echobot-php/">
+                <i class="fa fa-google-plus"></i><span class="">Compartir en Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/uncategorized/Line-echobot-php/">
-                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Web-Programming/Line-echobot-php/">
+                <i class="fa fa-facebook-official"></i><span>Compartir en Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/uncategorized/Line-echobot-php/">
-                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Web-Programming/Line-echobot-php/">
+                <i class="fa fa-twitter"></i><span>Compartir en Twitter</span>
             </a>
         </li>
     </ul>
@@ -408,14 +414,14 @@ Composer 1.2.2">
         
             <h4 id="about-card-name">Yen Jung</h4>
         
-            <h5 id="about-card-bio"><p>Coding Life</p>
+            <h5 id="about-card-bio"><p>author.bio</p>
 </h5>
         
         
             <h5 id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>NCU Master Student</p>
+                <p>author.job</p>
 
             </h5>
         
