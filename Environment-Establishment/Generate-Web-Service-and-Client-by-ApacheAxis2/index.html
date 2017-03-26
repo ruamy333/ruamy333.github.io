@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-tw,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="My Blog">
+    <title>使用 Axis2 和 Eclipse 創建 Java Web Service Client - My Blog</title>
+    <meta name="author" content="Yen Jung">
+    
+    
+    
+    <meta name="description" content="開發環境
+Java SE Development Kit 6u45
+Apache Tomcat 6 (6.0.48)
+Apache Axis 2 (1.7.1)  要下載bin及war檔
+Eclipse IDE for Java EE Developers (4.6)
+MS SQL Server 2016">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="使用 Axis2 和 Eclipse 創建 Java Web Service Client">
+<meta property="og:url" content="http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="開發環境
+Java SE Development Kit 6u45
+Apache Tomcat 6 (6.0.48)
+Apache Axis 2 (1.7.1)  要下載bin及war檔
+Eclipse IDE for Java EE Developers (4.6)
+MS SQL Server 2016">
+<meta property="og:image" content="http://yoursite.com/image/1.jpg">
+<meta property="og:image" content="http://yoursite.com/image/2.jpg">
+<meta property="og:image" content="http://yoursite.com/image/3.jpg">
+<meta property="og:image" content="http://yoursite.com/image/4.jpg">
+<meta property="og:image" content="http://yoursite.com/image/5.jpg">
+<meta property="og:image" content="http://yoursite.com/image/6.jpg">
+<meta property="og:image" content="http://yoursite.com/image/7.jpg">
+<meta property="og:image" content="http://yoursite.com/image/8.jpg">
+<meta property="og:image" content="http://yoursite.com/image/9.jpg">
+<meta property="og:image" content="http://yoursite.com/image/10.jpg">
+<meta property="og:image" content="http://yoursite.com/image/11.jpg">
+<meta property="og:image" content="http://yoursite.com/image/12.jpg">
+<meta property="og:image" content="http://yoursite.com/image/13.jpg">
+<meta property="og:image" content="http://yoursite.com/image/14.jpg">
+<meta property="og:image" content="http://yoursite.com/image/15.jpg">
+<meta property="og:image" content="http://yoursite.com/image/16.jpg">
+<meta property="og:image" content="http://yoursite.com/image/17.jpg">
+<meta property="og:image" content="http://yoursite.com/image/18.jpg">
+<meta property="og:image" content="http://yoursite.com/image/19.jpg">
+<meta property="og:image" content="http://yoursite.com/image/20.jpg">
+<meta property="og:image" content="http://yoursite.com/image/22.jpg">
+<meta property="og:image" content="http://yoursite.com/image/23.jpg">
+<meta property="og:image" content="http://yoursite.com/image/24.jpg">
+<meta property="og:image" content="http://yoursite.com/image/25.jpg">
+<meta property="og:image" content="http://yoursite.com/image/26.jpg">
+<meta property="og:image" content="http://yoursite.com/image/27.jpg">
+<meta property="og:updated_time" content="2017-03-26T14:45:16.682Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Axis2 和 Eclipse 創建 Java Web Service Client">
+<meta name="twitter:description" content="開發環境
+Java SE Development Kit 6u45
+Apache Tomcat 6 (6.0.48)
+Apache Axis 2 (1.7.1)  要下載bin及war檔
+Eclipse IDE for Java EE Developers (4.6)
+MS SQL Server 2016">
+<meta name="twitter:image" content="http://yoursite.com/image/1.jpg">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://yoursite.com/assets/images/myimage.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-nuvue6sithwirecbhvw3dkaobiojqvtadsnhguwi7k04xklybw5djl1smadp.min.css">
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">My Blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/myimage.jpg"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/myimage.jpg"/>
+            </a>
+            <span class="sidebar-profile-name">Yen Jung</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categories</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Archives</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/ruamy333" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            使用 Axis2 和 Eclipse 創建 Java Web Service Client
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-03-26T06:05:44-04:00">
+	
+		    Mar 26, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Environment-Establishment/">Environment Establishment</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#開發環境"><span class="toc-text">開發環境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相關軟體位置"><span class="toc-text">相關軟體位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安裝-SQL-Server-JDBC-Driver"><span class="toc-text">安裝 SQL Server JDBC Driver</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-1-下載"><span class="toc-text">Step 1 下載</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-2-安裝"><span class="toc-text">Step 2 安裝</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#環境設定"><span class="toc-text">環境設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#資料庫連線參數"><span class="toc-text">資料庫連線參數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立-Eclipse-專案"><span class="toc-text">建立 Eclipse 專案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step1-在-Eclipse-建立一個新的-Java-project"><span class="toc-text">Step1 在 Eclipse 建立一個新的 Java project</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-2-建立資料庫連線"><span class="toc-text">Step 2 建立資料庫連線</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-3-建立-Java-bean"><span class="toc-text">Step 3 建立 Java bean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-4-建立-Service"><span class="toc-text">Step 4 建立 Service</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打包-JAR-檔"><span class="toc-text">打包 JAR 檔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#佈署-service"><span class="toc-text">佈署 service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撰寫-Client-測試"><span class="toc-text">撰寫 Client 測試</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-1-建立-client-專案"><span class="toc-text">Step 1 建立 client 專案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-2-Java-code-Dbtest-java"><span class="toc-text">Step 2 Java code ( Dbtest.java )</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#執行結果"><span class="toc-text">執行結果</span></a></li></ol>
+<h3 id="開發環境"><a href="#開發環境" class="headerlink" title="開發環境"></a>開發環境</h3><ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html#jdk-6u45-oth-JPR" target="_blank" rel="external">Java SE Development Kit 6u45</a></li>
+<li><a href="https://tomcat.apache.org/download-60.cgi" target="_blank" rel="external">Apache Tomcat 6 (6.0.48)</a></li>
+<li><a href="https://archive.apache.org/dist/axis/axis2/java/core/1.7.1/" target="_blank" rel="external">Apache Axis 2 (1.7.1)</a><br>  要下載bin及war檔</li>
+<li><a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplerr" target="_blank" rel="external">Eclipse IDE for Java EE Developers (4.6)</a></li>
+<li>MS SQL Server 2016</li>
+</ul>
+<a id="more"></a>
+<h3 id="相關軟體位置"><a href="#相關軟體位置" class="headerlink" title="相關軟體位置"></a>相關軟體位置</h3><ul>
+<li>Tomcat 6 :<br>  D:\apache-tomcat-6.0.45</li>
+<li>Axis2 :<br>  bin檔案放在D槽並改為axis2 (D:\axis2)<br>  將axis2.war檔放在D:\apache-tomcat-6.0.48\webapps，便會自動生成axis2資料夾。</li>
+<li>Workspace :<br>  C:\Users\adl\workspace\WS2MSClient</li>
+</ul>
+<hr>
+<h3 id="安裝-SQL-Server-JDBC-Driver"><a href="#安裝-SQL-Server-JDBC-Driver" class="headerlink" title="安裝 SQL Server JDBC Driver"></a>安裝 SQL Server JDBC Driver</h3><h4 id="Step-1-下載"><a href="#Step-1-下載" class="headerlink" title="Step 1 下載"></a>Step 1 下載</h4><p>要使用 Java 連線到 SQL Server 必須要使用適當的 JDBC driver，在微軟的 MSDN 網站有提供免費下載。<br><a href="https://www.microsoft.com/zh-tw/download/details.aspx?id=11774" target="_blank" rel="external">Microsoft JDBC Driver 6.0 for SQL Server</a></p>
+<h4 id="Step-2-安裝"><a href="#Step-2-安裝" class="headerlink" title="Step 2 安裝"></a>Step 2 安裝</h4><p>解壓縮 sqljdbc_6.0_cht 可得到四個 jar 檔，Java Runtime Environment (JRE) 的版本支援及相關 JDBC API 取決於下列 JAR 檔案：</p>
+<ul>
+<li>Sqljdbc.jar 需要 JR    E 5 版並支援 JDBC 3.0 API</li>
+<li>Sqljdbc4.jar 需要 JRE 6 版並支援 JDBC 4.0 API</li>
+<li>Sqljdbc41.jar 需要 JRE 7 版並支援 JDBC 4.1 API</li>
+<li>Sqljdbc42.jar 需要 JRE 8 版並支援 JDBC 4.2 API</li>
+</ul>
+<p>因為我們是 JRE6，因此將 sqljdbc4.jar 複製到 tomcat 目錄下的 lib，以及 D:\apache-tomcat-6.0.48\webapps\axis2\WEB-INF\lib 中。</p>
+<div style="width:602px; border:solid 1px #ccc;"><div class="figure center" style="width:600px;"><img class="fig-img" src="image/1.jpg" style="width:600px;" alt=""></div></div><br><div style="width:602px; border:solid 1px #ccc;"><div class="figure center" style="width:600px;"><img class="fig-img" src="image/2.jpg" style="width:600px;" alt=""></div></div>
+
+<hr>
+<h3 id="環境設定"><a href="#環境設定" class="headerlink" title="環境設定"></a>環境設定</h3><p>安裝好 Java 和 Tomcat 之後，要先修改環境變數，在本機上按右鍵，選擇 內容 -&gt; 進階系統設定 -&gt; 進階 -&gt; 環境變數</p>
+<div style="width:302px; border:solid 1px #ccc;"><div class="figure center" style="width:300px;"><img class="fig-img" src="image/3.jpg" style="width:300px;" alt=""></div></div><br>點選新增系統變數<br><div style="width:302px; border:solid 1px #ccc;"><div class="figure center" style="width:300px;"><img class="fig-img" src="image/4.jpg" style="width:300px;" alt=""></div></div>
+
+<p>加入系統變數 JAVA_HOME，位置是 Java jdk 的位置</p>
+<div style="width:502px; border:solid 1px #ccc;"><div class="figure center" style="width:500px;"><img class="fig-img" src="image/5.jpg" style="width:500px;" alt=""></div></div>
+
+<p>加入系統變數 CLASSPATH，位置是 Java jdk\lib 的位置</p>
+<div style="width:502px; border:solid 1px #ccc;"><div class="figure center" style="width:500px;"><img class="fig-img" src="image/6.jpg" style="width:500px;" alt=""></div></div>
+
+<p>在系統變數 Path最後面加上 java bin 的位置</p>
+<div style="width:502px; border:solid 1px #ccc;"><div class="figure center" style="width:500px;"><img class="fig-img" src="image/7.jpg" style="width:500px;" alt=""></div></div>
+
+<p>加入系統變數 AXIS2_HOME，位置是 D:\axis2 的位置</p>
+<div style="width:502px; border:solid 1px #ccc;"><div class="figure center" style="width:500px;"><img class="fig-img" src="image/8.jpg" style="width:500px;" alt=""></div></div>
+
+<hr>
+<h3 id="資料庫連線參數"><a href="#資料庫連線參數" class="headerlink" title="資料庫連線參數"></a>資料庫連線參數</h3><p>開啟 D:\apache-tomcat-6.0.45\webapps\axis2\WEB-INF\conf\axis2.xml，將連線到資料庫的相關參數寫在裡面；<br>這邊會用到四個參數<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">parameter</span> <span class="attr">name</span>=<span class="string">"DB_driverClassName"</span>&gt;</span>com.microsoft.sqlserver.jdbc.SQLServerDriver<span class="tag">&lt;/<span class="name">parameter</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">parameter</span> <span class="attr">name</span>=<span class="string">"DB_url"</span>&gt;</span>jdbc:sqlserver://xxx.xxx.xx.xxx:1433;DatabaseName=test<span class="tag">&lt;/<span class="name">parameter</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">parameter</span> <span class="attr">name</span>=<span class="string">"DB_username"</span>&gt;</span>user<span class="tag">&lt;/<span class="name">parameter</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">parameter</span> <span class="attr">name</span>=<span class="string">"DB_password"</span>&gt;</span>password<span class="tag">&lt;/<span class="name">parameter</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<div style="width:704px; border:solid 1px #ccc;"><div class="figure center" style="width:700px;"><img class="fig-img" src="image/9.jpg" style="width:700px;" alt=""></div></div>
+
+<hr>
+<h3 id="建立-Eclipse-專案"><a href="#建立-Eclipse-專案" class="headerlink" title="建立 Eclipse 專案"></a>建立 Eclipse 專案</h3><h4 id="Step1-在-Eclipse-建立一個新的-Java-project"><a href="#Step1-在-Eclipse-建立一個新的-Java-project" class="headerlink" title="Step1 在 Eclipse 建立一個新的 Java project"></a>Step1 在 Eclipse 建立一個新的 Java project</h4><p>左上角的 File →New→ Java Project ，在 Project name 輸入 WS2MSSQL，按 Next</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/10.jpg" style="width:400px;" alt=""></div></div>
+
+<p>選 Libraries 分頁按 Add Library</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/11.jpg" style="width:400px;" alt=""></div></div>
+
+<p>選 User Library 後按 Next</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/12.jpg" style="width:400px;" alt=""></div></div>
+
+<p>新增一個User Library 叫做 Axis2 Libraries</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/13.jpg" style="width:400px;" alt=""></div></div>
+
+<p>新增完畢後，案右邊的 Add External JARs，新增 Axis2 的 jar 檔，jar 檔位置是在 D:\axis2\lib</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/14.jpg" style="width:400px;" alt=""></div></div>
+
+<p>新增完畢後，要將 Axis2 Libraries 打勾才算有使用，後按 Finish 完成</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/15.jpg" style="width:400px;" alt=""></div></div>
+
+
+<p> </p>
+<h4 id="Step-2-建立資料庫連線"><a href="#Step-2-建立資料庫連線" class="headerlink" title="Step 2 建立資料庫連線"></a>Step 2 建立資料庫連線</h4><p>首先建立新的 Java Class ，命名為 DBtestServiceLifeCycle，並實作 org.apache.axis2.engine.ServiceLifeCycle 介面；必須實做兩個方法</p>
+<ul>
+<li>public void startUp(ConfigurationContext configctx, AxisService service)<ul>
+<li>this will be called during the deployement time of the service. irrespective of the service scope this method will be called</li>
+</ul>
+</li>
+<li>public void shutDown(ConfigurationContext configctx, AxisService service)<ul>
+<li>this will be called during the system shut down time. irrespective of the service scope this method will be called</li>
+</ul>
+</li>
+</ul>
+<figure class="codeblock codeblock--tabbed"><figcaption><span>DBtestServiceLifeCycle.java</span><ul class="tabs"><li class="tab active">java</li></ul></figcaption><div class="tabs-content"><figure class="highlight java" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> org.apache.axis2.context.ConfigurationContext;</span><br><span class="line"><span class="keyword">import</span> org.apache.axis2.description.AxisService;</span><br><span class="line"><span class="keyword">import</span> org.apache.axis2.engine.ServiceLifeCycle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBtestServiceLifeCycle</span> <span class="keyword">implements</span> <span class="title">ServiceLifeCycle</span> </span>{</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DB_CONNECTION = <span class="string">"connKey"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutDown</span><span class="params">(ConfigurationContext configctx, AxisService service)</span> </span>{</span><br><span class="line">                <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">               Connection conn = (Connection) configctx.getProperty(DB_CONNECTION);</span><br><span class="line">               <span class="keyword">if</span> (conn != <span class="keyword">null</span>) {</span><br><span class="line">                       <span class="keyword">try</span> {<span class="comment">// 關閉資料庫連線</span></span><br><span class="line">                               conn.close();</span><br><span class="line">                        } <span class="keyword">catch</span> (SQLException e) {</span><br><span class="line">                                System.out.println(<span class="string">"Error while closing the DB connection"</span>);</span><br><span class="line">                        }</span><br><span class="line">               }</span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startUp</span><span class="params">(ConfigurationContext configctx, AxisService service)</span> </span>{</span><br><span class="line">                <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">                <span class="comment">// 從axis2.xml讀取四個連線參數</span></span><br><span class="line">  String DB_driverClassName = (String) service.getAxisConfiguration(). getParameterValue(<span class="string">"DB_driverClassName"</span>);</span><br><span class="line">    String DB_url =  (String) service.getAxisConfiguration(). getParameterValue(<span class="string">"DB_url"</span>);</span><br><span class="line">    String DB_username = (String) service.getAxisConfiguration(). getParameterValue(<span class="string">"DB_username"</span>);</span><br><span class="line">    String DB_password = (String) service.getAxisConfiguration(). getParameterValue(<span class="string">"DB_password"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">try</span> {</span><br><span class="line">                        Class.forName(DB_driverClassName);</span><br><span class="line">                        Connection conn = DriverManager.getConnection(DB_url, DB_username,DB_password);</span><br><span class="line">                        configctx.setProperty(DB_CONNECTION, conn);</span><br><span class="line">                } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">                        System.out.println(e.getMessage());</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                }</span><br><span class="line">        }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
+<h4 id="Step-3-建立-Java-bean"><a href="#Step-3-建立-Java-bean" class="headerlink" title="Step 3 建立 Java bean"></a>Step 3 建立 Java bean</h4><p>建立新的 Java Class ，命名為 Dept，宣告六個 private 屬性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> String deptid;</div><div class="line">	<span class="keyword">private</span> String senior;</div><div class="line">	<span class="keyword">private</span> String dept_cname;</div><div class="line">	<span class="keyword">private</span> String dept_fullname;</div><div class="line">	<span class="keyword">private</span> String dept_no;</div><div class="line">	<span class="keyword">private</span> Date modify_date;</div><div class="line"></div><div class="line">	<span class="comment">//產生各自的 getter / setter</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getDeptid</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> deptid;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDeptid</span><span class="params">(String deptid)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.deptid = deptid;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h4 id="Step-4-建立-Service"><a href="#Step-4-建立-Service" class="headerlink" title="Step 4 建立 Service"></a>Step 4 建立 Service</h4><p>建立新的 Java Class ，命名為 DeptDBService，我們來實做兩個 method</p>
+<ol>
+<li><p>傳入 String 並傳回 String<br>撰寫 public String QueryNameById(String deptid) method，這是要給 Client 端呼叫的方法</p>
+</li>
+<li><p>無傳入參數，傳回 java bean<br>撰寫 public Dept[] listAllDept() method，這是要給 Client 端呼叫的方法</p>
+</li>
+</ol>
+<figure class="codeblock codeblock--tabbed"><figcaption><span>DeptDBService.java</span><ul class="tabs"><li class="tab active">java</li></ul></figcaption><div class="tabs-content"><figure class="highlight java" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> org.apache.axis2.context.MessageContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeptDBService</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">QueryNameById</span><span class="params">(String deptid)</span></span>{</span><br><span class="line">		Connection conn = (Connection) MessageContext.getCurrentMessageContext().getProperty(</span><br><span class="line">		    			   DBtestServiceLifeCycle.DB_CONNECTION);</span><br><span class="line">		     String dept_cname = <span class="string">"查無結果"</span>;</span><br><span class="line">		       <span class="keyword">if</span>(conn !=<span class="keyword">null</span>) {</span><br><span class="line">		           String SQL = <span class="string">"SELECT dept_cname FROM dept WHERE deptid = '"</span> + deptid + <span class="string">"'"</span>;</span><br><span class="line">		           <span class="keyword">try</span> {</span><br><span class="line">		               PreparedStatement statement = conn.prepareStatement(SQL);</span><br><span class="line">		               ResultSet rs = statement.executeQuery();</span><br><span class="line">		               <span class="keyword">if</span>(rs.next()) dept_cname = rs.getString(<span class="string">"dept_cname"</span>);</span><br><span class="line">		           } <span class="keyword">catch</span> (SQLException e) {</span><br><span class="line">		               e.printStackTrace();</span><br><span class="line">		           }</span><br><span class="line">		       }</span><br><span class="line">			<span class="keyword">return</span> dept_cname;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">public</span> Dept[] listAllDept() {</span><br><span class="line">		Connection conn = (Connection) MessageContext.getCurrentMessageContext().getProperty(</span><br><span class="line"> 			   DBtestServiceLifeCycle.DB_CONNECTION);</span><br><span class="line">    <span class="keyword">if</span>(conn !=<span class="keyword">null</span>) {</span><br><span class="line">        String SQL = <span class="string">"SELECT * FROM dept"</span>;</span><br><span class="line">        System.out.println(SQL);</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            PreparedStatement statement = conn.prepareStatement(SQL);</span><br><span class="line">            ResultSet rs = statement.executeQuery();</span><br><span class="line">            ArrayList&lt;Dept&gt; list = <span class="keyword">new</span> ArrayList&lt;Dept&gt;();</span><br><span class="line">            <span class="keyword">while</span> (rs.next()) {</span><br><span class="line">         	     Dept dept = <span class="keyword">new</span> Dept();</span><br><span class="line">         	     dept.setDeptid(rs.getString(<span class="string">"deptid"</span>));</span><br><span class="line">                 dept.setSenior(rs.getString(<span class="string">"senior"</span>));</span><br><span class="line">          	   	 dept.setDept_cname(rs.getString(<span class="string">"dept_cname"</span>));</span><br><span class="line">         	     dept.setDept_fullname(rs.getString(<span class="string">"dept_fullname"</span>));</span><br><span class="line">           	   	 dept.setDept_no(rs.getString(<span class="string">"dept_no"</span>));</span><br><span class="line">				 dept.setModify_date(rs.getDate(<span class="string">"modify_date"</span>));</span><br><span class="line">                 list.add(dept);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">return</span> (Dept[])list.toArray(<span class="keyword">new</span> Dept[list.size()]);</span><br><span class="line">        } <span class="keyword">catch</span> (SQLException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
+<p>Step 5 在 Project 中建立新的 Folder，命名為 META-INF</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/16.jpg" style="width:400px;" alt=""></div></div>
+
+<p>Step 6 在 META-INF 底下新增 services.xml</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/17.jpg" style="width:400px;" alt=""></div></div>
+
+<p>要在 services.xml 中配置 Web Services 提供的方法，否則在執行 Web Services Client 程式時，會出現下列錯誤訊息。<br>「org.apache.axis2.AxisFault: The ServiceClass object does not implement the required method in the following form: OMElement getxxx(OMElement e)」<br>內容如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">name</span>=<span class="string">"DBSampleService"</span> <span class="attr">class</span>=<span class="string">"DBtestServiceLifeCycle"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">description</span>&gt;</span> Exposing a DB as a Web Service  <span class="tag">&lt;/<span class="name">description</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">messageReceivers</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">messageReceiver</span> <span class="attr">mep</span>=<span class="string">"http://www.w3.org/ns/wsdl/in-only"</span></span></div><div class="line">			<span class="attr">class</span>=<span class="string">"org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"</span> /&gt;</div><div class="line">		<span class="tag">&lt;<span class="name">messageReceiver</span> <span class="attr">mep</span>=<span class="string">"http://www.w3.org/ns/wsdl/in-out"</span></span></div><div class="line">			<span class="attr">class</span>=<span class="string">"org.apache.axis2.rpc.receivers.RPCMessageReceiver"</span> /&gt;</div><div class="line">	<span class="tag">&lt;/<span class="name">messageReceivers</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">parameter</span> <span class="attr">name</span>=<span class="string">"ServiceClass"</span>&gt;</span></div><div class="line">		DeptDBService</div><div class="line">	<span class="tag">&lt;/<span class="name">parameter</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">operation</span> <span class="attr">name</span>=<span class="string">"QueryNameById"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">messageReceiver</span> <span class="attr">mep</span>=<span class="string">"http://www.w3.org/ns/wsdl/in-out"</span></span></div><div class="line">          <span class="attr">class</span>=<span class="string">"org.apache.axis2.rpc.receivers.RPCMessageReceiver"</span> /&gt;</div><div class="line">	<span class="tag">&lt;/<span class="name">operation</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;<span class="name">operation</span> <span class="attr">name</span>=<span class="string">"listAllDept"</span>&gt;</span></div><div class="line">	    <span class="tag">&lt;<span class="name">messageReceiver</span> <span class="attr">mep</span>=<span class="string">"http://www.w3.org/ns/wsdl/in-out"</span></span></div><div class="line">	        <span class="attr">class</span>=<span class="string">"org.apache.axis2.rpc.receivers.RPCMessageReceiver"</span> /&gt;</div><div class="line">	<span class="tag">&lt;/<span class="name">operation</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></div></pre></td></tr></table></figure>
+<div style="width:604px; border:solid 1px #ccc;"><div class="figure center" style="width:600px;"><img class="fig-img" src="image/18.jpg" style="width:600px;" alt=""></div></div>
+
+<hr>
+<h3 id="打包-JAR-檔"><a href="#打包-JAR-檔" class="headerlink" title="打包 JAR 檔"></a>打包 JAR 檔</h3><p>在 Project上 按右鍵，選 Export…</p>
+<div style="width:304px; border:solid 1px #ccc;"><div class="figure center" style="width:300px;"><img class="fig-img" src="image/19.jpg" style="width:300px;" alt=""></div></div>
+
+<p>選擇 Java →JAR file ，按 Next</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/20.jpg" style="width:400px;" alt=""></div></div>
+
+
+<p>將剛剛寫好的檔案都打勾起來，下面打上儲存的路徑，然後按 finish</p>
+<div style="width:404px; border:solid 1px #ccc;"><div class="figure center" style="width:400px;"><img class="fig-img" src="image/22.jpg" style="width:400px;" alt=""></div></div>
+
+<hr>
+<h3 id="佈署-service"><a href="#佈署-service" class="headerlink" title="佈署 service"></a>佈署 service</h3><p>用瀏覽器開啟 Axis2 管理頁面，選左邊的 Upload Service (<a href="http://localhost:8080/axis2/" target="_blank" rel="external">http://localhost:8080/axis2/</a>)</p>
+<div style="width:604px; border:solid 1px #ccc;"><div class="figure center" style="width:600px;"><img class="fig-img" src="image/23.jpg" style="width:600px;" alt=""></div></div>
+
+
+<p>按選擇檔案，選擇剛剛包好的檔案，之後按開啟<br>按下 Upload</p>
+<div style="width:604px; border:solid 1px #ccc;"><div class="figure center" style="width:600px;"><img class="fig-img" src="image/24.jpg" style="width:600px;" alt=""></div></div>
+
+
+<p>按左邊的 Available Services 可以看到剛剛佈署完成的 DBSampleService</p>
+<div style="width:604px; border:solid 1px #ccc;"><div class="figure center" style="width:600px;"><img class="fig-img" src="image/25.jpg" style="width:600px;" alt=""></div></div>
+
+
+<p>可以看到我們剛剛寫的兩個 methods ( listAllDept、QueryNameById )<br>按下 DBSampleService 即可看到 WSDL 定義</p>
+<div style="width:604px; border:solid 1px #ccc;"><div class="figure center" style="width:600px;"><img class="fig-img" src="image/26.jpg" style="width:600px;" alt=""></div></div>
+
+<hr>
+<h3 id="撰寫-Client-測試"><a href="#撰寫-Client-測試" class="headerlink" title="撰寫 Client 測試"></a>撰寫 Client 測試</h3><h4 id="Step-1-建立-client-專案"><a href="#Step-1-建立-client-專案" class="headerlink" title="Step 1 建立 client 專案"></a>Step 1 建立 client 專案</h4><p>先建立一個一般的 Java project 名為 WS2MSClient，同樣的完成後匯入 Axis2 的 Library 。<br>接著要替你剛剛寫的 Web Services 產生 Client 端的程式碼:</p>
+<ol>
+<li>開啟 CMD 進入至 Axis2 的 bin 目錄下 ex: D:\axis2\bin</li>
+<li>執行 D:\axis2\bin&gt; wsdl2java.bat -uri <a href="http://localhost:8080/axis2/services/DBSampleService?wsdl" target="_blank" rel="external">http://localhost:8080/axis2/services/DBSampleService?wsdl</a> -o C:\Users\adl\workspace\WS2MSClient</li>
+</ol>
+<blockquote>
+<p>PS:-uri WSDL 的 uri 位置<br>   -o 輸出 stub classes 的位置. 預設會增加 src 目錄.<br>   -p 設定輸出 stub classes 使用的 package.</p>
+</blockquote>
+<h4 id="Step-2-Java-code-Dbtest-java"><a href="#Step-2-Java-code-Dbtest-java" class="headerlink" title="Step 2 Java code ( Dbtest.java )"></a>Step 2 Java code ( Dbtest.java )</h4><figure class="codeblock codeblock--tabbed"><figcaption><span>Dbtest.java</span><ul class="tabs"><li class="tab active">java</li></ul></figcaption><div class="tabs-content"><figure class="highlight java" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.ws.axis2;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> org.apache.ws.axis2.DBSampleServiceStub.Dept;</span><br><span class="line"><span class="keyword">import</span> org.apache.ws.axis2.DBSampleServiceStub.ListAllDeptResponse;</span><br><span class="line"><span class="keyword">import</span> org.apache.ws.axis2.DBSampleServiceStub.QueryNameById;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dbtest</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * <span class="doctag">@param</span> args</span><br><span class="line">	 * <span class="doctag">@throws</span> RemoteException</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> RemoteException </span>{</span><br><span class="line">		DBSampleServiceStub stub = <span class="keyword">new</span> DBSampleServiceStub();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 產生連線用Object</span></span><br><span class="line">		<span class="comment">/* invoke web service( java bean ) */</span></span><br><span class="line">		DBSampleServiceStub.ListAllDept dd = <span class="keyword">new</span> DBSampleServiceStub.ListAllDept();</span><br><span class="line">		ListAllDeptResponse response = stub.listAllDept(dd);</span><br><span class="line"></span><br><span class="line">		Dept[] result = response.get_return();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (Dept d : result)</span><br><span class="line">			System.out.println(</span><br><span class="line">d.getDeptid() + <span class="string">"\t"</span> + d.getSenior() + <span class="string">"\t"</span></span><br><span class="line">+ d.getDept_cname() + <span class="string">"\t"</span> + d.getDept_fullname() + <span class="string">"\t"</span></span><br><span class="line">			+ d.getDept_no() + <span class="string">"\t"</span> + d.getModify_date());</span><br><span class="line"></span><br><span class="line">		<span class="comment">/*invoke web service(String) */</span></span><br><span class="line">		String Deptid = <span class="string">"A100"</span>;</span><br><span class="line">		QueryNameById param = <span class="keyword">new</span> QueryNameById();</span><br><span class="line">		param.setDeptid(Deptid);</span><br><span class="line">		System.out.println(Deptid + <span class="string">"的查詢結果為: "</span>+stub.QueryNameById(param).get_return());</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="keyword">package</span> org.apache.ws.axis2;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> org.apache.ws.axis2.DBSampleServiceStub.Dept;</span><br><span class="line"><span class="keyword">import</span> org.apache.ws.axis2.DBSampleServiceStub.ListAllDeptResponse;</span><br><span class="line"><span class="keyword">import</span> org.apache.ws.axis2.DBSampleServiceStub.QueryNameById;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dbtest</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * <span class="doctag">@param</span> args</span><br><span class="line">	 * <span class="doctag">@throws</span> RemoteException</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> RemoteException </span>{</span><br><span class="line">		DBSampleServiceStub stub = <span class="keyword">new</span> DBSampleServiceStub();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 產生連線用Object</span></span><br><span class="line">		<span class="comment">/* invoke web service( java bean ) */</span></span><br><span class="line">		DBSampleServiceStub.ListAllDept dd = <span class="keyword">new</span> DBSampleServiceStub.ListAllDept();</span><br><span class="line">		ListAllDeptResponse response = stub.listAllDept(dd);</span><br><span class="line"></span><br><span class="line">		Dept[] result = response.get_return();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (Dept d : result)</span><br><span class="line">			System.out.println(</span><br><span class="line">d.getDeptid() + <span class="string">"\t"</span> + d.getSenior() + <span class="string">"\t"</span></span><br><span class="line">+ d.getDept_cname() + <span class="string">"\t"</span> + d.getDept_fullname() + <span class="string">"\t"</span></span><br><span class="line">			+ d.getDept_no() + <span class="string">"\t"</span> + d.getModify_date());</span><br><span class="line"></span><br><span class="line">		<span class="comment">/*invoke web service(String) */</span></span><br><span class="line">		String Deptid = <span class="string">"A100"</span>;</span><br><span class="line">		QueryNameById param = <span class="keyword">new</span> QueryNameById();</span><br><span class="line">		param.setDeptid(Deptid);</span><br><span class="line">		System.out.println(Deptid + <span class="string">"的查詢結果為: "</span>+stub.QueryNameById(param).get_return());</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div></figure>
+<h3 id="執行結果"><a href="#執行結果" class="headerlink" title="執行結果"></a>執行結果</h3><div style="width:604px; border:solid 1px #ccc;"><div class="figure center" style="width:600px;"><img class="fig-img" src="image/27.jpg" style="width:600px;" alt=""></div></div>
+
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Axis2/">Axis2</a> <a class="tag tag--primary tag--small t-link" href="/tags/Eclipse/">Eclipse</a> <a class="tag tag--primary tag--small t-link" href="/tags/Java/">Java</a> <a class="tag tag--primary tag--small t-link" href="/tags/SQL-Server-2016/">SQL Server 2016</a> <a class="tag tag--primary tag--small t-link" href="/tags/Tomcat/">Tomcat</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Environment-Establishment/PHP7-Driver-for-SQLServer/" data-tooltip="PHP7 連接 Microsoft SQL Server">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2017 Yen Jung. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Environment-Establishment/PHP7-Driver-for-SQLServer/" data-tooltip="PHP7 連接 Microsoft SQL Server">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/Environment-Establishment/Generate-Web-Service-and-Client-by-ApacheAxis2/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/myimage.jpg"/>
+        
+            <h4 id="about-card-name">Yen Jung</h4>
+        
+            <h5 id="about-card-bio"><p>Coding Life</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>NCU Master Student</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Taiwan
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/background.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+</html>
